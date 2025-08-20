@@ -29,7 +29,17 @@ CONSTRAINTS: Keep responses short, safe, and actionable. Ground answers in relia
 
 ZERO-SHOT PROMPT: Without seeing any examples, generate the health guidance purely based on the user's input.
 
+ONE-SHOT PROMPT: Here is an example of how you should respond:
 
+USER: "I have a headache and mild fever for 1 day"
+ASSISTANT:
+{
+  "Possible Conditions": ["Common cold", "Mild viral infection"],
+  "Suggested Precautions": ["Drink warm fluids", "Rest well", "Monitor temperature"],
+  "Severity Level": "Mild",
+  "When to See a Doctor": "If fever lasts more than 3 days or headache worsens",
+  "Info Sources": ["WHO", "CDC"]
+}
 `;
 
 
@@ -53,4 +63,4 @@ async function checkSymptoms(input) {
 }
 
 // 👇 Example user input
-checkSymptoms("I am getting body pains");
+checkSymptoms("I am getting little pain in my heart");
