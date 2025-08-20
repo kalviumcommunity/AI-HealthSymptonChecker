@@ -7,6 +7,10 @@ const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+const urgency = "high";       // example: could be "low", "medium", "high"
+const userContext = "adult";  // example: "child", "senior", etc.
+
+
 // System prompt with RTFC framework (Zero-Shot)
 const systemPrompt = `
 You are a trusted medical assistant.
@@ -61,6 +65,13 @@ ASSISTANT:
   "When to See a Doctor": "If symptoms last more than 10 days or worsen",
   "Info Sources": ["WHO", "CDC"]
 }
+
+DYNAMIC PROMPTING:
+The urgency of the situation is: ${urgency}.
+The user context is: ${userContext}.
+Adjust your tone and suggestions based on this information.
+
+
 `;
 
 
@@ -84,4 +95,4 @@ async function checkSymptoms(input) {
 }
 
 // 👇 Example user input
-checkSymptoms("I am having pain in my stomach");
+checkSymptoms("I have a open cut on stomach and its bleeding and i am 30years old");
