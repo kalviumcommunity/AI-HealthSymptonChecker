@@ -71,6 +71,11 @@ The urgency of the situation is: ${urgency}.
 The user context is: ${userContext}.
 Adjust your tone and suggestions based on this information.
 
+CHAIN-OF-THOUGHT PROMPTING (Reason step by step before final JSON):
+1. Identify the main symptoms.
+2. Recall common conditions linked to those symptoms.
+3. Apply medical safety rules (never give a final diagnosis).
+4. Do NOT show the reasoning to the user — only output the final structured JSON.
 
 `;
 
@@ -95,4 +100,4 @@ async function checkSymptoms(input) {
 }
 
 // 👇 Example user input
-checkSymptoms("I have a open cut on stomach and its bleeding and i am 30years old");
+checkSymptoms("I am getting severe headache ");
