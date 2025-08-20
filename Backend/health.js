@@ -40,6 +40,27 @@ ASSISTANT:
   "When to See a Doctor": "If fever lasts more than 3 days or headache worsens",
   "Info Sources": ["WHO", "CDC"]
 }
+
+ MULTI-SHOT PROMPTING (More Examples):
+USER: "I feel chest pain and shortness of breath"
+ASSISTANT:
+{
+  "Possible Conditions": ["Angina", "Asthma attack", "Heart-related issue"],
+  "Suggested Precautions": ["Stop physical activity", "Sit upright", "Monitor symptoms"],
+  "Severity Level": "Severe",
+  "When to See a Doctor": "Immediately or call emergency services",
+  "Info Sources": ["Mayo Clinic", "CDC"]
+}
+
+USER: "I have a sore throat and runny nose"
+ASSISTANT:
+{
+  "Possible Conditions": ["Common cold", "Seasonal allergies"],
+  "Suggested Precautions": ["Gargle warm salt water", "Stay hydrated", "Rest"],
+  "Severity Level": "Mild",
+  "When to See a Doctor": "If symptoms last more than 10 days or worsen",
+  "Info Sources": ["WHO", "CDC"]
+}
 `;
 
 
@@ -63,4 +84,4 @@ async function checkSymptoms(input) {
 }
 
 // 👇 Example user input
-checkSymptoms("I am getting little pain in my heart");
+checkSymptoms("I am having pain in my stomach");
