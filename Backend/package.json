@@ -1,0 +1,27 @@
+{
+  "name": "ai-healthsymptonchecker",
+  "version": "1.0.0",
+  "description": "This project is an AI-powered health assistant designed to help users understand their symptoms and get medically-grounded suggestions. It leverages advanced capabilities of Large Language Models (LLMs), function calling, and Retrieval-Augmented Generation (RAG) to provide personalized, safe, and structured medical guidance.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kalviumcommunity/AI-HealthSymptonChecker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kalviumcommunity/AI-HealthSymptonChecker/issues"
+  },
+  "homepage": "https://github.com/kalviumcommunity/AI-HealthSymptonChecker#readme",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "openai": "^5.13.1"
+  }
+}
