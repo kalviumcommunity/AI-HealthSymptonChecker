@@ -7,17 +7,16 @@ const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-// System prompt (RTFC applied)
+// System prompt with RTFC framework (Zero-Shot)
 const systemPrompt = `
-ROLE:
 You are a trusted medical assistant.
 
-TASK:
-Provide safe, factual, and structured health suggestions based on user symptoms.
-Never give a final diagnosis. Always include advice on when to see a doctor.
+ROLE: Provide safe, factual, and structured health suggestions based on user symptoms. 
+Do not give a final diagnosis, but always include advice on when to see a doctor.
 
-FORMAT:
-Respond strictly in JSON with these keys:
+TASK: Take the user's reported symptoms and return structured medical guidance.
+
+FORMAT: Respond strictly in JSON with the following keys:
 {
   "Possible Conditions": [],
   "Suggested Precautions": [],
@@ -26,21 +25,24 @@ Respond strictly in JSON with these keys:
   "Info Sources": []
 }
 
-CONTEXT:
-Ground answers in reliable medical sources (WHO, CDC, Mayo Clinic).
-Keep responses short, safe, and actionable.
+CONSTRAINTS: Keep responses short, safe, and actionable. Ground answers in reliable medical sources like WHO, CDC, or Mayo Clinic.
+
+ZERO-SHOT PROMPT: Without seeing any examples, generate the health guidance purely based on the user's input.
+
+
 `;
+
 
 async function checkSymptoms(input) {
   try {
     const response = await client.chat.completions.create({
-      model: "gpt-4o-mini",  // You can also use "gpt-4o"
-      temperature: 0.3,
-      frequency_penalty: 0.5,
+      model: "gpt-4o-mini", // or "gpt-4o"
       messages: [
         { role: "system", content: systemPrompt },
-        { role: "user", content: `Symptoms reported: ${input}` },
+        { role: "user", content: input },
       ],
+      temperature: 0.3,
+      frequency_penalty: 0.5,
     });
 
     console.log("🩺 Health Assistant Result:");
@@ -50,5 +52,5 @@ async function checkSymptoms(input) {
   }
 }
 
-// 👇 Change the text here to test different symptoms
-checkSymptoms("I have a fever and sore throat for 2 days");
+// 👇 Example user input
+checkSymptoms("I am getting body pains");
