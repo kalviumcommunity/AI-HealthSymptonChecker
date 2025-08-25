@@ -77,6 +77,9 @@ CHAIN-OF-THOUGHT PROMPTING (Reason step by step before final JSON):
 3. Apply medical safety rules (never give a final diagnosis).
 4. Do NOT show the reasoning to the user — only output the final structured JSON.
 
+TOKENS & TOKENIZATION:
+After every response, log total tokens used (prompt + completion).
+
 `;
 
 
@@ -100,4 +103,4 @@ async function checkSymptoms(input) {
 }
 
 // 👇 Example user input
-checkSymptoms("I am getting severe headache ");
+checkSymptoms("I just got stabbed in the stomach ");
